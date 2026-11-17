@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RVA Entertainment</title>
+<meta name="description" content="RVA Entertainment is an independent studio making cozy pixel-art games.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="RVA Entertainment">
+<meta property="og:description" content="Independent studio making cozy pixel-art games.">
+<meta property="og:image" content="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a3c58; --teal:#245f6a; --teal2:#3c8480; --green:#0f5132;
+    --gold:#f7d774; --red:#c8262f; --cream:#eeecd8; --ink:#0d2235;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif; color:var(--cream); line-height:1.6;
+    background:linear-gradient(to bottom,var(--navy) 0 38%,var(--teal) 38% 62%,var(--teal2) 62% 82%,var(--green) 82% 100%);
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  .pixel{font-family:'Press Start 2P',monospace;letter-spacing:.5px}
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .stars i{position:absolute;width:6px;height:6px;background:var(--cream);animation:blink 3s steps(2) infinite}
+  .stars i.g{background:var(--gold)}
+  @keyframes blink{50%{opacity:.25}}
+  main{position:relative;z-index:1;flex:1;width:100%;max-width:880px;margin:0 auto;padding:56px 16px 32px}
+  header{text-align:center}
+  .logo{width:min(260px,62vw);height:auto;border-radius:50%;image-rendering:pixelated;
+    box-shadow:0 0 0 6px var(--ink),0 18px 40px rgba(0,0,0,.35);animation:float 4s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-8px)}}
+  h1{margin-top:32px;font-size:clamp(18px,4.6vw,30px);color:var(--cream);text-shadow:3px 3px 0 var(--red)}
+  .tag{margin-top:16px;font-size:clamp(16px,2.4vw,19px);opacity:.92}
+  .card{background:rgba(13,34,53,.55);border:4px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.25);
+    padding:28px 24px;margin-top:40px;border-radius:4px}
+  .card h2{font-size:14px;color:var(--gold);margin-bottom:16px;text-shadow:2px 2px 0 var(--ink)}
+  .game{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .game .badge{font-size:9px;background:var(--red);color:var(--cream);padding:8px 10px;border:3px solid var(--ink);white-space:nowrap}
+  .game h3{font-size:16px;color:var(--cream);margin-bottom:8px}
+  .game div{flex:1;min-width:220px}
+  footer{position:relative;z-index:1;text-align:center;padding:24px 16px 32px;font-size:14px;opacity:.85}
+  footer .pixel{font-size:9px;color:var(--gold)}
+  @media (prefers-reduced-motion:reduce){.logo,.stars i{animation:none}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true">
+  <i style="top:9%;left:12%"></i><i class="g" style="top:14%;left:78%"></i>
+  <i style="top:24%;left:30%"></i><i style="top:6%;left:55%;animation-delay:1s"></i>
+  <i class="g" style="top:31%;left:90%;animation-delay:.5s"></i><i style="top:40%;left:6%;animation-delay:1.5s"></i>
+</div>
+<main>
+  <header>
+    <img class="logo" src="logo.png" alt="RVA Entertainment logo">
+    <h1 class="pixel">RVA Entertainment</h1>
+    <p class="tag">An independent studio making cozy pixel-art games.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="pixel">About us</h2>
+    <p>We are a small indie team from Brazil. We make relaxing games with charming pixel art,
+      gentle progression and lots of heart — games you can play for a few minutes or for hours.</p>
+  </section>
+
+  <section class="card">
+    <h2 class="pixel">Our games</h2>
+    <div class="game">
+      <div>
+        <h3 class="pixel">Lily Land</h3>
+        <p>Grow a tiny farm into a lively village. Plant, harvest, cook for the villagers
+          and watch your little world come alive through the seasons.</p>
+      </div>
+      <span class="badge pixel">Coming soon</span>
+    </div>
+  </section>
+</main>
+<footer>
+  <p class="pixel">&copy; <span id="y">2026</span> RVA Entertainment</p>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

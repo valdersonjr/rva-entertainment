@@ -11,77 +11,184 @@
 <meta property="og:image" content="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1a3c58; --teal:#245f6a; --teal2:#3c8480; --green:#0f5132;
-    --gold:#f7d774; --red:#c8262f; --cream:#eeecd8; --ink:#0d2235;
+    --navy:#1a3c58; --navy2:#16334c; --teal:#245f6a; --teal2:#3c8480; --green:#0f5132; --green2:#0b3f27;
+    --gold:#f7d774; --gold2:#d9b44a; --red:#c8262f; --cream:#eeecd8; --ink:#0d2235;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Nunito',system-ui,sans-serif; color:var(--cream); line-height:1.6;
-    background:linear-gradient(to bottom,var(--navy) 0 38%,var(--teal) 38% 62%,var(--teal2) 62% 82%,var(--green) 82% 100%);
-    min-height:100vh; display:flex; flex-direction:column;
-  }
-  .pixel{font-family:'Press Start 2P',monospace;letter-spacing:.5px}
-  .stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-  .stars i{position:absolute;width:6px;height:6px;background:var(--cream);animation:blink 3s steps(2) infinite}
+  html{scroll-behavior:smooth;background:var(--green)}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--cream);line-height:1.65;background:var(--navy);overflow-x:hidden}
+  img{display:block}
+  .px{font-family:'Press Start 2P',monospace;letter-spacing:.5px;line-height:1.5}
+  .wrap{width:100%;max-width:960px;margin:0 auto;padding:0 16px}
+  a{color:inherit}
+
+  /* NAV */
+  nav{position:absolute;top:0;left:0;right:0;z-index:5}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 3px var(--ink)}
+  .brand span{font-size:12px}
+  nav ul{display:flex;gap:24px;list-style:none}
+  nav ul a{font-size:11px;padding:8px 0;text-decoration:none;opacity:.85}
+  nav ul a:hover{opacity:1;color:var(--gold)}
+
+  /* HERO */
+  .hero{position:relative;min-height:min(100vh,760px);min-height:min(100svh,760px);display:flex;align-items:center;justify-content:center;
+    text-align:center;background:linear-gradient(var(--navy2),var(--navy) 70%);padding:96px 0 170px}
+  .stars{position:absolute;inset:0;pointer-events:none}
+  .stars i{position:absolute;width:6px;height:6px;background:var(--cream);animation:blink 3.2s steps(2) infinite}
   .stars i.g{background:var(--gold)}
-  @keyframes blink{50%{opacity:.25}}
-  main{position:relative;z-index:1;flex:1;width:100%;max-width:880px;margin:0 auto;padding:56px 16px 32px}
-  header{text-align:center}
-  .logo{width:min(260px,62vw);height:auto;border-radius:50%;image-rendering:pixelated;
-    box-shadow:0 0 0 6px var(--ink),0 18px 40px rgba(0,0,0,.35);animation:float 4s ease-in-out infinite}
-  @keyframes float{50%{transform:translateY(-8px)}}
-  h1{margin-top:32px;font-size:clamp(18px,4.6vw,30px);color:var(--cream);text-shadow:3px 3px 0 var(--red)}
-  .tag{margin-top:16px;font-size:clamp(16px,2.4vw,19px);opacity:.92}
-  .card{background:rgba(13,34,53,.55);border:4px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.25);
-    padding:28px 24px;margin-top:40px;border-radius:4px}
-  .card h2{font-size:14px;color:var(--gold);margin-bottom:16px;text-shadow:2px 2px 0 var(--ink)}
-  .game{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-  .game .badge{font-size:9px;background:var(--red);color:var(--cream);padding:8px 10px;border:3px solid var(--ink);white-space:nowrap}
-  .game h3{font-size:16px;color:var(--cream);margin-bottom:8px}
-  .game div{flex:1;min-width:220px}
-  footer{position:relative;z-index:1;text-align:center;padding:24px 16px 32px;font-size:14px;opacity:.85}
-  footer .pixel{font-size:9px;color:var(--gold)}
-  @media (prefers-reduced-motion:reduce){.logo,.stars i{animation:none}}
+  .stars i.s{width:4px;height:4px}
+  @keyframes blink{50%{opacity:.2}}
+  .moon{position:absolute;top:13%;right:11%;width:48px;height:48px;background:var(--gold);
+    box-shadow:0 0 0 6px rgba(247,215,116,.15),0 0 0 14px rgba(247,215,116,.07);
+    clip-path:polygon(25% 0,75% 0,75% 8%,92% 8%,92% 25%,100% 25%,100% 75%,92% 75%,92% 92%,75% 92%,75% 100%,25% 100%,25% 92%,8% 92%,8% 75%,0 75%,0 25%,8% 25%,8% 8%,25% 8%)}
+  .hero-in{position:relative;z-index:2}
+  .logo{width:min(240px,58vw);height:auto;margin:0 auto;border-radius:50%;
+    box-shadow:0 0 0 6px var(--ink),0 24px 50px rgba(0,0,0,.4);animation:float 4.5s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-10px)}}
+  h1{margin-top:36px;font-size:clamp(18px,5vw,40px);text-shadow:4px 4px 0 var(--red)}
+  .tag{margin:18px auto 0;max-width:30ch;font-size:clamp(17px,2.4vw,21px);font-weight:600;opacity:.92}
+  .btn{display:inline-block;margin-top:34px;font-size:12px;text-decoration:none;color:var(--ink);background:var(--gold);
+    padding:16px 22px;border:4px solid var(--ink);box-shadow:inset -4px -4px 0 var(--gold2),5px 5px 0 rgba(0,0,0,.3);
+    transition:transform .08s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translate(3px,3px);box-shadow:inset -4px -4px 0 var(--gold2),2px 2px 0 rgba(0,0,0,.3)}
+  .hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:190px;shape-rendering:crispEdges}
+
+  /* SECTIONS */
+  section{position:relative;padding:72px 0 88px}
+  .s-games{background:#2e6f6c;padding-top:40px}
+  .s-about{background:var(--teal)}
+  .edge{position:absolute;left:0;right:0;top:-24px;width:100%;height:24px;shape-rendering:crispEdges}
+  .eyebrow{display:table;margin:0 auto;padding:6px 10px;background:var(--ink);text-align:center;font-size:10px;color:var(--gold);text-shadow:2px 2px 0 var(--ink)}
+  h2{text-align:center;margin-top:14px;font-size:clamp(16px,3.2vw,24px);text-shadow:3px 3px 0 var(--ink)}
+  .panel{background:rgba(13,34,53,.78);border:4px solid var(--ink);box-shadow:8px 8px 0 rgba(0,0,0,.22);border-radius:4px}
+
+  .game{margin-top:44px;display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center;padding:32px}
+  .game .art{width:100%;aspect-ratio:1;border-radius:22px;image-rendering:pixelated;border:4px solid var(--ink);
+    box-shadow:0 0 0 4px var(--cream),8px 8px 0 4px rgba(0,0,0,.3)}
+  .game h3{font-size:clamp(18px,3vw,24px);color:var(--gold);text-shadow:3px 3px 0 var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 16px}
+  .chips span{font-size:13px;font-weight:800;padding:4px 10px;background:rgba(238,236,216,.12);border:2px solid rgba(238,236,216,.25);border-radius:3px}
+  .game p{font-size:17px}
+  .soon{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:10px;background:var(--red);color:var(--cream);
+    padding:12px 14px;border:3px solid var(--ink);box-shadow:4px 4px 0 rgba(0,0,0,.3)}
+  .soon i{width:8px;height:8px;background:var(--gold);animation:blink 1.4s steps(2) infinite}
+
+  .about-text{max-width:62ch;margin:28px auto 0;text-align:center;font-size:18px}
+  .tiles{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tile{padding:26px 22px}
+  .tile b{display:block;font-size:11px;color:var(--gold);margin-bottom:12px}
+  .tile p{font-size:16px;opacity:.95}
+
+  /* FOOTER */
+  footer{position:relative;background:var(--green);padding:56px 0 40px;text-align:center}
+  .grass{position:absolute;left:0;right:0;top:-24px;width:100%;height:24px;shape-rendering:crispEdges}
+  footer img{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;box-shadow:0 0 0 3px var(--ink)}
+  footer .px{font-size:10px;color:var(--gold)}
+  footer p.small{margin-top:10px;font-size:14px;opacity:.8}
+
+  @media (max-width:720px){
+    nav ul{display:none}
+    .game{grid-template-columns:1fr;text-align:center;padding:28px 20px;gap:24px}
+    .game .art{max-width:200px;margin:0 auto}
+    .chips{justify-content:center}
+    .tiles{grid-template-columns:1fr}
+    .moon{right:8%;width:36px;height:36px}
+    .soon{font-size:8px;padding:12px 10px;white-space:nowrap;letter-spacing:0}
+    .logo{width:min(200px,52vw)}
+    .chips{gap:6px}.chips span{font-size:12px;padding:3px 8px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true">
-  <i style="top:9%;left:12%"></i><i class="g" style="top:14%;left:78%"></i>
-  <i style="top:24%;left:30%"></i><i style="top:6%;left:55%;animation-delay:1s"></i>
-  <i class="g" style="top:31%;left:90%;animation-delay:.5s"></i><i style="top:40%;left:6%;animation-delay:1.5s"></i>
-</div>
-<main>
-  <header>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="favicon.png" alt=""><span class="px">RVA</span></a>
+  <ul class="px"><li><a href="#games">Games</a></li><li><a href="#about">About</a></li></ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="stars" aria-hidden="true">
+    <i style="top:12%;left:9%"></i><i class="g" style="top:22%;left:24%;animation-delay:.6s"></i>
+    <i class="s" style="top:8%;left:40%;animation-delay:1.2s"></i><i style="top:30%;left:68%;animation-delay:.3s"></i>
+    <i class="g s" style="top:9%;left:62%;animation-delay:1.8s"></i><i style="top:42%;left:6%;animation-delay:2.1s"></i>
+    <i class="s" style="top:38%;left:92%;animation-delay:.9s"></i><i class="g" style="top:52%;left:84%;animation-delay:1.5s"></i>
+    <i class="s" style="top:55%;left:16%;animation-delay:.4s"></i>
+  </div>
+  <div class="moon" aria-hidden="true"></div>
+  <div class="hero-in wrap">
     <img class="logo" src="logo.png" alt="RVA Entertainment logo">
-    <h1 class="pixel">RVA Entertainment</h1>
+    <h1 class="px">RVA Entertainment</h1>
     <p class="tag">An independent studio making cozy pixel-art games.</p>
-  </header>
+    <a class="btn px" href="#games">See our games</a>
+  </div>
+  <svg class="hills" viewBox="0 0 1200 190" preserveAspectRatio="none" aria-hidden="true">
+    <path id="h1" fill="#245f6a"/><path id="h2" fill="#2e6f6c"/>
+  </svg>
+</header>
 
-  <section class="card">
-    <h2 class="pixel">About us</h2>
-    <p>We are a small indie team from Brazil. We make relaxing games with charming pixel art,
-      gentle progression and lots of heart — games you can play for a few minutes or for hours.</p>
-  </section>
-
-  <section class="card">
-    <h2 class="pixel">Our games</h2>
-    <div class="game">
+<section class="s-games" id="games">
+  <div class="wrap">
+    <span class="eyebrow px">Our games</span>
+    <h2 class="px">Now growing</h2>
+    <article class="game panel">
+      <img class="art" src="lily-land.png" alt="Lily Land game icon: a girl in a straw hat">
       <div>
-        <h3 class="pixel">Lily Land</h3>
-        <p>Grow a tiny farm into a lively village. Plant, harvest, cook for the villagers
-          and watch your little world come alive through the seasons.</p>
+        <h3 class="px">Lily Land</h3>
+        <div class="chips"><span>Farming</span><span>Cozy</span><span>Village builder</span><span>Android &amp; PC</span></div>
+        <p>Grow a tiny farm into a lively village. Plant and harvest, cook for the villagers,
+          go fishing and watch your little world come alive through the seasons.</p>
+        <span class="soon px"><i></i>Coming soon to Google Play</span>
       </div>
-      <span class="badge pixel">Coming soon</span>
+    </article>
+  </div>
+</section>
+
+<section class="s-about" id="about">
+  <svg class="edge" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true"><path id="ed" fill="#245f6a"/></svg>
+  <div class="wrap">
+    <span class="eyebrow px">About us</span>
+    <h2 class="px">Small team, big heart</h2>
+    <p class="about-text">RVA Entertainment is a small indie studio from Brazil. We make relaxing games
+      you can play for five minutes or for a whole evening — and always leave you smiling.</p>
+    <div class="tiles">
+      <div class="tile panel"><b class="px">Cozy first</b><p>No rush and no stress. Every game is made to help you unwind.</p></div>
+      <div class="tile panel"><b class="px">Pixel worlds</b><p>Charming pixel art full of small details to discover.</p></div>
+      <div class="tile panel"><b class="px">Your pace</b><p>Short sessions or long ones — your progress is always waiting for you.</p></div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
 <footer>
-  <p class="pixel">&copy; <span id="y">2026</span> RVA Entertainment</p>
+  <svg class="grass" viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true"><path id="gr" fill="#0f5132"/></svg>
+  <div class="wrap">
+    <img src="favicon.png" alt="">
+    <p class="px">&copy; <span id="y">2026</span> RVA Entertainment</p>
+    <p class="small">Made with love in Brazil.</p>
+  </div>
 </footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // stepped pixel hills
+  function steps(id, base, amp, freq, phase, step, H){
+    let d = `M0 ${H}`;
+    for(let x=0; x<=1200; x+=step){
+      const y = Math.round((base - amp*Math.sin(x*freq+phase) - amp*.45*Math.sin(x*freq*2.3+phase*1.7)) / 10) * 10;
+      d += ` L${x} ${y} L${x+step} ${y}`;
+    }
+    document.getElementById(id).setAttribute('d', d + ` L1200 ${H} Z`);
+  }
+  steps('h1', 80, 34, .006, 1, 40, 190);
+  steps('h2', 135, 22, .009, 3, 40, 190);
+  steps('gr', 14, 6, .05, 0, 20, 24);
+  steps('ed', 12, 6, .035, 2, 20, 24);
+</script>
 </body>
 </html>
